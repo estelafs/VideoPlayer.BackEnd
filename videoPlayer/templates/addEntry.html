@@ -6,29 +6,47 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/signin/">
     <title>Add new video to the history</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
 </head>
 
 <body>
-    <div>
-        <h1>Add new video to the history</h1>
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation"><a href="{% url 'bookMarks' %}">see bookmarks</a></li>
+          <li role="presentation"><a href="{% url 'history' %}">see history</a></li>
+          <li role="presentation"><a href="{% url 'addBookmark' %}">add new bookmark video</a></li>
+        </ul>
+      </nav>
+      <h3 class="text-muted">Video Player
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square-fill" viewBox="0 0 16 16">
+        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 10a.5.5 0 0 0 .832.374l4.5-4a.5.5 0 0 0 0-.748l-4.5-4A.5.5 0 0 0 5.5 4v8z"/>
+      </svg>
+      </h3>
     </div>
 
-    <div>
-        <a type="button" class="btn btn-link" href="{% url 'bookMarks' %}">See bookmarks</a>
-        <a type="button" class="btn btn-link" href="{% url 'history' %}">See history</a>
-        <a type="button" class="btn btn-link" href="{% url 'addBookmark' %}">New bookmarks</a>
+    <div class="jumbotron">
+      <h1>Add new video to the history</h1>
     </div>
 
-    <div class="container">
+    <div class="container" style="max-width: 400px;">
         <form class="form-signin" method="POST" action="{% url 'addEntry' %}">
           {% csrf_token %} 
           <div class="form-group">
-            <label for="inputUrl" class="sr-only">Video URL:</label>
+            <label for="inputUrl" class="sr-only"></label>
             {{ form.url }}
           </div>
-
-          <button class="btn btn-lg btn-primary btn-block" type="submit">Save</button>
+          <button class="btn btn-outline-dark btn-block" type="submit">add</button>
         </form>
+    </div>
+  </div>
 </body>
 </html>

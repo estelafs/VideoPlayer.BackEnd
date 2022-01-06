@@ -6,26 +6,59 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="canonical" href="https://getbootstrap.com/docs/3.4/examples/jumbotron-narrow/">
     <title>Bookmarks</title>
+
+    <!-- Bootstrap core CSS -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <!-- Custom styles for this template -->
+    <link href="{% static 'bootstrap.min.css' %}" rel="stylesheet">
+
+    <style>
+      .two {
+        columns: 2;
+        -webkit-columns: 2;
+        -moz-columns: 2;
+      }
+    </style>
 </head>
+
 <body>
-    <div>
-        <h1>Bookmarks</h1>
+  <div class="container">
+    <div class="header clearfix">
+      <nav>
+        <ul class="nav nav-pills pull-right">
+          <li role="presentation"><a href="{% url 'addEntry' %}">add new video to the history</a></li>
+          <li role="presentation"><a href="{% url 'history' %}">see history</a></li>
+          <li role="presentation"><a href="{% url 'addBookmark' %}">add new bookmark video</a></li>
+        </ul>
+      </nav>
+      <h3 class="text-muted">Video Player
+      <svg xmlns="http://www.w3.org/2000/svg" width="16" height="16" fill="currentColor" class="bi bi-caret-right-square-fill" viewBox="0 0 16 16">
+        <path d="M0 2a2 2 0 0 1 2-2h12a2 2 0 0 1 2 2v12a2 2 0 0 1-2 2H2a2 2 0 0 1-2-2V2zm5.5 10a.5.5 0 0 0 .832.374l4.5-4a.5.5 0 0 0 0-.748l-4.5-4A.5.5 0 0 0 5.5 4v8z"/>
+      </svg>
+      </h3>
     </div>
 
-    <div>
-        <a type="button" class="btn btn-link" href="{% url 'addEntry' %}">Add a new video to the history</a>
-        <a type="button" class="btn btn-link" href="{% url 'history' %}">See history</a>
-        <a type="button" class="btn btn-link" href="{% url 'addBookmark' %}">New bookmarks</a>
+    <div class="jumbotron">
+      <h1>Bookmarks</h1>
     </div>
 
-    {% for entry in entriesBookmark %}
-      <div>
-        <h1>{{ entry.add_at }}</h1>
-      </div>
-      <ul>
-        <li> <a href="{{ entry.url }}" target="_blank"> {{ entry.url }} </a> </li>
+    <div class="container">
+      <ul class="two">
+        {% for entry in entriesBookmark %}
+          <div>
+            <p>Video added at {{ entry.add_at }}</p>  
+          </div>
+          
+          <ul>
+            <a href="{{ entry.url }}" target="_blank"> {{ entry.url }} </a> </ul>
+          <br>
+        {% endfor %}
       </ul>
-    {% endfor %}
+    </div>
+
+  </div>
 </body>
 </html>
