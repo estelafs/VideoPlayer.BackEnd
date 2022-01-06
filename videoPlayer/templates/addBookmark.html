@@ -6,22 +6,22 @@
     <meta charset="UTF-8">
     <meta http-equiv="X-UA-Compatible" content="IE=edge">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Add new video to the history</title>
+    <title>Add new bookmark</title>
 </head>
 
 <body>
     <div>
-        <h1>Add new video to the history</h1>
+        <h1>Add new bookmark</h1>
     </div>
 
     <div>
         <a type="button" class="btn btn-link" href="{% url 'bookMarks' %}">See bookmarks</a>
         <a type="button" class="btn btn-link" href="{% url 'history' %}">See history</a>
-        <a type="button" class="btn btn-link" href="{% url 'addBookmark' %}">New bookmarks</a>
+        <a type="button" class="btn btn-link" href="{% url 'addEntry' %}">Add a new video to the history</a>
     </div>
 
     <div class="container">
-        <form class="form-signin" method="POST" action="{% url 'addEntry' %}">
+        <form class="form-signin" method="POST" action="{% url 'addBookmark' %}">
           {% csrf_token %} 
           <div class="form-group">
             <label for="inputUrl" class="sr-only">Video URL:</label>
